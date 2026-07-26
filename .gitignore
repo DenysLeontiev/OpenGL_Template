@@ -1,10 +1,17 @@
-# Build output
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-Win32/
-ipch/
+# Build output (anchored to the real output locations only - do NOT use bare
+# "Release/"/"Debug/" here, vendor libs like GLEW ship their .lib files inside
+# a folder literally called "Release", and an unanchored pattern would eat it)
+/Debug/
+/Release/
+/x64/
+/x86/
+/Win32/
+/OpenGLTemplate/Debug/
+/OpenGLTemplate/Release/
+/OpenGLTemplate/x64/
+/OpenGLTemplate/x86/
+/OpenGLTemplate/Win32/
+/ipch/
 *.ilk
 *.obj
 *.pdb
@@ -14,10 +21,6 @@ ipch/
 *.recipe
 *.exe
 *.exp
-
-# Don't ignore prebuilt External libraries
-!External/**/*.lib
-!External/**/*.dll
 
 # Visual Studio
 .vs/
