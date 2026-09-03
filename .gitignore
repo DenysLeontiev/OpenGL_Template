@@ -12,6 +12,7 @@
 /OpenGLTemplate/x86/
 /OpenGLTemplate/Win32/
 /ipch/
+/build/
 *.ilk
 *.obj
 *.pdb
