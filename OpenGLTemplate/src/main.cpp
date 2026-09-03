@@ -7,6 +7,10 @@
 
 #include "stb_image.h"
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -85,6 +89,19 @@ int main()
         std::cout << "Reason: " << stbi_failure_reason() << '\n';
     }
 
+    // Test Assimp
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile("does_not_exist.obj", aiProcess_Triangulate | aiProcess_FlipUVs);
+    if (scene)
+    {
+        std::cout << "Assimp loaded a model successfully.\n";
+    }
+    else
+    {
+        std::cout << "Assimp linked successfully.\n";
+        std::cout << "Reason: " << importer.GetErrorString() << '\n';
+    }
+
     // Setup Dear ImGui
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -114,7 +131,7 @@ int main()
         ImGui::DockSpaceOverViewport(0, nullptr, ImGuiDockNodeFlags_PassthruCentralNode);
 
         ImGui::Begin("OpenGL Template");
-        ImGui::Text("GLFW + GLEW + GLM + ImGui (docking) all linked correctly.");
+        ImGui::Text("GLFW + GLEW + GLM + ImGui (docking) + Assimp all linked correctly.");
         ImGui::Text("GL Vendor   : %s", (const char*)glGetString(GL_VENDOR));
         ImGui::Text("GL Renderer : %s", (const char*)glGetString(GL_RENDERER));
         ImGui::Text("GL Version  : %s", (const char*)glGetString(GL_VERSION));
