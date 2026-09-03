@@ -21,10 +21,14 @@
 *.recipe
 *.exe
 *.exp
+*.sln
+
 
 # Visual Studio
 .vs/
-*.vcxproj.user
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
 
 # ImGui runtime state
 imgui.ini
