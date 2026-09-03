@@ -21,6 +21,7 @@
 *.tlog
 *.recipe
 *.exe
+!External/premake5/premake5.exe
 *.exp
 *.sln
 
